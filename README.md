@@ -91,14 +91,12 @@ e.g.
 $ wget -N -b --limit-rate=500k -i fulgaz-list-<size>.txt
 ```
 
-
 ### Downloading a subset of files
 
 To copy just a subset, create a copy of the main file (based on format) and remove the ones you don't want, e.g.
 ```
 $ cp <main-file> <new-file>
-```
-
+``` 
 ```
 $ cp fulgaz-list-720P.txt fulgaz-my-list.txt
 ```
@@ -116,3 +114,12 @@ At any time you can add to this file and just run again.
 
 Using the `-N` means the ones already downloaded won't get redownloaded.
 
+### SSH Download to NAS
+
+Download remotely using SSH, downloads will keep going in background once SSH terminal is closed
+```
+$ nohup wget -N -qc --limit-rate=500k -i fulgaz-list-<size>.txt &
+$ exit
+```
+* `-q` turn off wget output
+* `-c` resumes any broken downloads due to wget stopping unexpectedly 
